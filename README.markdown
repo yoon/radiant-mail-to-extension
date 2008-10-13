@@ -27,32 +27,32 @@ From the Rails documentation:
 > 
 > Options
 > 
-> *:encode - This key will accept the strings "javascript" or "hex". Passing "javascript" will dynamically create and encode the mailto: link then eval it into the DOM of the page. This method will not show the link on the page if the user has JavaScript disabled. Passing "hex" will hex encode the email_address before outputting the mailto: link.
-> *:replace_at - When the link name isn‘t provided, the email_address is used for the link label. You can use this option to obfuscate the email_address by substituting the @ sign with the string given as the value.
-> *:replace_dot - When the link name isn‘t provided, the email_address is used for the link label. You can use this option to obfuscate the email_address by substituting the . in the email with the string given as the value.
-> *:subject - Preset the subject line of the email.
-> *:body - Preset the body of the email.
-> *:cc - Carbon Copy addition recipients on the email.
-> *:bcc - Blind Carbon Copy additional recipients on the email.
+> * :encode - This key will accept the strings "javascript" or "hex". Passing "javascript" will dynamically create and encode the mailto: link then eval it into the DOM of the page. This method will not show the link on the page if the user has JavaScript disabled. Passing "hex" will hex encode the email_address before outputting the mailto: link.
+> * :replace_at - When the link name isn‘t provided, the email_address is used for the link label. You can use this option to obfuscate the email_address by substituting the @ sign with the string given as the value.
+> * :replace_dot - When the link name isn‘t provided, the email_address is used for the link label. You can use this option to obfuscate the email_address by substituting the . in the email with the string given as the value.
+> * :subject - Preset the subject line of the email.
+> * :body - Preset the body of the email.
+> * :cc - Carbon Copy addition recipients on the email.
+> * :bcc - Blind Carbon Copy additional recipients on the email.
 
 Examples
 --------
-<pre>
-  <r:mail_to email="me@domain.com" />
-  # => <a href="mailto:me@domain.com">me@domain.com</a>
 
-  <r:mail_to email="me@domain.com" name="My email" encode="javascript" />
-  # => <script type="text/javascript">eval(unescape('%64%6f%63...%6d%65%6e'))</script>
+>  <r:mail_to email="me@domain.com" />
+>  # => <a href="mailto:me@domain.com">me@domain.com</a>
+>
+>  <r:mail_to email="me@domain.com" name="My email" encode="javascript" />
+>  # => <script type="text/javascript">eval(unescape('%64%6f%63...%6d%65%6e'))</script>
+>
+>  <r:mail_to email="me@domain.com" encode="hex" encode_name="true" />
+>  # => <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;%6d%65@%64%6f%6d%61%69%6e.%63%6f%6d">&#109;&#101;&#64;&#100;&#111;&#109;&#97;&#105;&#110;&#46;&#99;&#111;&#109;</a>
+>
+>  <r:mail_to email="me@domain.com" replace_at="_at_" replace_dot="_dot_" class="email" />
+>  # => <a href="mailto:me@domain.com" class="email">me_at_domain_dot_com</a>
+>
+>  <r:mail_to email="me@domain.com" name="My email" cc="ccaddress@domain.com" subject="This is an example email" />
+>  # => <a href="mailto:me@domain.com?cc=ccaddress@domain.com&subject=This%20is%20an%20example%20email">My email</a>
 
-  <r:mail_to email="me@domain.com" encode="hex" encode_name="true" />
-  # => <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;%6d%65@%64%6f%6d%61%69%6e.%63%6f%6d">&#109;&#101;&#64;&#100;&#111;&#109;&#97;&#105;&#110;&#46;&#99;&#111;&#109;</a>
-
-  <r:mail_to email="me@domain.com" replace_at="_at_" replace_dot="_dot_" class="email" />
-  # => <a href="mailto:me@domain.com" class="email">me_at_domain_dot_com</a>
-
-  <r:mail_to email="me@domain.com" name="My email" cc="ccaddress@domain.com" subject="This is an example email" />
-  # => <a href="mailto:me@domain.com?cc=ccaddress@domain.com&subject=This%20is%20an%20example%20email">My email</a>
-</pre>
 
 Acknowledgments
 ---------------
