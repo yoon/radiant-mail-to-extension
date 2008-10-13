@@ -45,7 +45,7 @@ Examples
     # => <script type="text/javascript">eval(unescape('%64%6f%63...%6d%65%6e'))</script>
     
     <r:mail_to email="me@domain.com" encode="hex" encode_name="true" /><br/>
-    # => <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;%6d%65@%64%6f%6d%61%69%6e.%63%6f%6d">&#109;&#101;&#64;&#100;&#111;&#109;&#97;&#105;&#110;&#46;&#99;&#111;&#109;</a>
+    # => <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;%6d%65@%64%6f%6d%61%69%6e.%63%6f%6d">&#109;&#101;...&#111;&#109;</a>
     
     <r:mail_to email="me@domain.com" replace_at="_at_" replace_dot="_dot_" class="email" /><br/>
     # => <a href="mailto:me@domain.com" class="email">me_at_domain_dot_com</a>
