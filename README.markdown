@@ -37,7 +37,7 @@ From the Rails documentation:
 
 Examples
 --------
-
+<code><pre>
   <r:mail_to email="me@domain.com" />
   # => <a href="mailto:me@domain.com">me@domain.com</a>
 
@@ -52,7 +52,7 @@ Examples
 
   <r:mail_to email="me@domain.com" name="My email" cc="ccaddress@domain.com" subject="This is an example email" />
   # => <a href="mailto:me@domain.com?cc=ccaddress@domain.com&subject=This%20is%20an%20example%20email">My email</a>
-
+</pre></code>
 
 Acknowledgments
 ---------------
