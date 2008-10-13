@@ -20,21 +20,8 @@ module MailToTag
     raise TagError.new("Please provide an `email' attribute for the `mail_to' tag.") unless attr.has_key?(:email)
     raise TagError.new("Encoding must be one of 'javascript' or 'hex'.") unless (attr[:encode].nil? || %w[javascript hex].include?(attr[:encode]))
     
-    opts_for_mail_to = {}
-    attr.each do |key, val|
-      if %w[encode replace_at replace_dot subject body cc bcc].include?(key.to_s)
-        opts_for_mail_to[key.to_sym] = val
-      end
-    end
-    html_opts = {}
-    attr.each do |key, val|
-      unless %w[name encode_name email encode replace_at replace_dot subject body cc bcc].include?(key.to_s)
-        html_opts[key.to_sym] = val
-      end
-    end
-    
-    link_text = (tag.expand.blank? ? nil : tag.expand) || attr[:name] || attr[:email]
-    if attr[:encode_name]
+    link_text = (tag.expand.blank? ? nil : tag.expand) || attr.delete(:name) || attr[:email]
+    if attr.delete(:encode_name)
       link_text_encoded = ''
       link_text.each_byte do |c|
         link_text_encoded << sprintf("&#%d;", c)
@@ -42,8 +29,10 @@ module MailToTag
       link_text = link_text_encoded
     end
     
+    email = attr.delete(:email)
+    
     in_context ViewContext do
-      mail_to(attr[:email], link_text, opts_for_mail_to, html_opts)
+      mail_to(email, link_text, attr)
     end
   end
   
