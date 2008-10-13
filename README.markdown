@@ -38,20 +38,20 @@ From the [Rails documentation][2]:
 Examples
 --------
 
-    &lt;r:mail_to email="me@domain.com" /&gt;<br/>
-    # => &lt;a href="mailto:me@domain.com"&gt;me@domain.com&lt;/a&gt;
+    <r:mail_to email="me@domain.com" /><br/>
+    # => <a href="mailto:me@domain.com">me@domain.com</a>
     
-    &lt;r:mail_to email="me@domain.com" name="My email" encode="javascript" /&gt;<br/>
-    # => &lt;script type="text/javascript"&gt;eval(unescape('%64%6f%63...%6d%65%6e'))&lt;/script&gt;
+    <r:mail_to email="me@domain.com" name="My email" encode="javascript" /><br/>
+    # => <script type="text/javascript">eval(unescape('%64%6f%63...%6d%65%6e'))</script>
     
-    &lt;r:mail_to email="me@domain.com" encode="hex" encode_name="true" /&gt;<br/>
-    # => &lt;a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;%6d%65@%64%6f%6d%61%69%6e.%63%6f%6d"&gt;&#109;&#101;&#64;&#100;&#111;&#109;&#97;&#105;&#110;&#46;&#99;&#111;&#109;&lt;/a&gt;
+    <r:mail_to email="me@domain.com" encode="hex" encode_name="true" /><br/>
+    # => <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;%6d%65@%64%6f%6d%61%69%6e.%63%6f%6d">&#109;&#101;&#64;&#100;&#111;&#109;&#97;&#105;&#110;&#46;&#99;&#111;&#109;</a>
     
-    &lt;r:mail_to email="me@domain.com" replace_at="_at_" replace_dot="_dot_" class="email" /&gt;<br/>
-    # => &lt;a href="mailto:me@domain.com" class="email"&gt;me_at_domain_dot_com&lt;/a&gt;
+    <r:mail_to email="me@domain.com" replace_at="_at_" replace_dot="_dot_" class="email" /><br/>
+    # => <a href="mailto:me@domain.com" class="email">me_at_domain_dot_com</a>
     
-    &lt;r:mail_to email="me@domain.com" name="My email" cc="ccaddress@domain.com" subject="This is an example email" /&gt;<br/>
-    # => &lt;a href="mailto:me@domain.com?cc=ccaddress@domain.com&subject=This%20is%20an%20example%20email"&gt;My email&lt;/a&gt;
+    <r:mail_to email="me@domain.com" name="My email" cc="ccaddress@domain.com" subject="This is an example email" /><br/>
+    # => <a href="mailto:me@domain.com?cc=ccaddress@domain.com&subject=This%20is%20an%20example%20email">My email</a>
 
 
 Acknowledgments
