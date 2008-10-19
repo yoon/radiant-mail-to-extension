@@ -16,7 +16,7 @@ module MailToTag
   <pre><code> <r:mail_to email="joe@example.com">Joe User</r:mail_to></code></pre>}
   tag "mail_to" do |tag|
     attr = tag.attr.symbolize_keys
-    attr[:encode_name] = false if attr[:encode_name].downcase != 'true'
+    attr[:encode_name] = false if attr[:encode_name] && attr[:encode_name].downcase != 'true'
     raise TagError.new("Please provide an `email' attribute for the `mail_to' tag.") unless attr.has_key?(:email)
     raise TagError.new("Encoding must be one of 'javascript' or 'hex'.") unless (attr[:encode].nil? || %w[javascript hex].include?(attr[:encode]))
     

@@ -1,20 +1,26 @@
-Mail To
--------
-
 MailTo is a [Radiant CMS][1] extension that hides e-mails from robots. It is a wrapper for the [Rails mail_to method][2] and supports all of the same options provided by that method.
 
-`mail_to`
+mail\_to
 ---------
 
-The `mail_to` tag obfuscates an as a block of javascript. For example, 
+The `mail_to` tag obfuscates an email address as a block of javascript. For example, 
 
-	<r:mail_to email="joe@example.com" />
+	<r:mail_to email="joe@example.com" encode="hex" />
 	
 is turned into
 
 	<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;%6a%6f%65@%65%78%61%6d%70%6c%65.%63%6f%6d">joe@example.com</a>
 	
 and will be displayed as a human-readable link.
+
+Usage
+-----
+
+Install the extension at `vendor/extensions`. Make sure the extension's directory is named mail\_to so that it will load properly.
+
+Use the tag in pages or snippets like this:
+
+    <r:mail_to email="me@domain.com" replace_at="_at_" replace_dot="_dot_" class="email" />
 
 Additional Options
 ------------------
@@ -52,10 +58,6 @@ Examples
     
     <r:mail_to email="me@domain.com" name="My email" cc="ccaddress@domain.com" subject="This is an example email" /><br/>
     # => <a href="mailto:me@domain.com?cc=ccaddress@domain.com&subject=This%20is%20an%20example%20email">My email</a>
-
-
-Acknowledgments
----------------
 
 [1]: http://radiantcms.org/
 [2]: http://rails.rubyonrails.com/classes/ActionView/Helpers/UrlHelper.html#M001606
