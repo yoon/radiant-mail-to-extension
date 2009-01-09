@@ -23,8 +23,8 @@ module MailToTag
     link_text = (tag.expand.blank? ? nil : tag.expand) || attr.delete(:name) || attr[:email]
     if attr.delete(:encode_name)
       link_text_encoded = ''
-      link_text.each_byte do |c|
-        link_text_encoded << sprintf("&#%d;", c)
+      link_text.unpack('U'*link_text.length).each do |c|
+        link_text_encoded << "&#" << c.to_s << ";"
       end
       link_text = link_text_encoded
     end
